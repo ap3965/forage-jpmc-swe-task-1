@@ -168,13 +168,14 @@ def read_csv():
 # Server
 
 class ThreadedHTTPServer(ThreadingMixIn, http.server.HTTPServer):
-    """ Boilerplate class for a multithreaded HTTP Server, with working
+    """ Boilerplate class for a multithreading HTTP Server, with working
         shutdown.
     """
     allow_reuse_address = True
 
     def shutdown(self):
         """ Override MRO to shutdown properly. """
+
         self.socket.close()
         http.server.HTTPServer.shutdown(self)
 
